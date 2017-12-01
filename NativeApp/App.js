@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, Image, Text, View, StyleSheet } from 'react-native';
 import NavigationBar from './navigationBar';
+import TopNavigationBar from './topNavigationBar';
 import HeaderBar from './headerBar';
 
 export default class SpaineyCupMainPage extends Component {
@@ -30,21 +31,18 @@ export default class SpaineyCupMainPage extends Component {
 
   render() {
     try {
-        let pic = {
-            uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-        };
         let name = this.state.data;
 
     return (
         <View style={{flex: 1}}>
-            <View style={{flex: 3}}>
+            <View style={{flex: 4}}>
                 <HeaderBar/>
             </View>
-            <View style={{flex: 25, backgroundColor: 'lightgreen'}}>
-                <Text style={styles.playerName}>{name}</Text>
+            <View style={{flex: 2, backgroundColor: 'darkgreen'}}>
+                <TopNavigationBar/>
             </View>
-            <View style={{flex: 3}}>
-                <NavigationBar/>
+            <View style={{flex: 28, backgroundColor: 'lightgreen'}}>
+                <Text style={styles.playerName}>{name}</Text>
             </View>
         </View>
     );

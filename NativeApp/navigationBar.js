@@ -28,7 +28,7 @@ export default class NavigationBar extends Component {
 
 const styles = StyleSheet.create({
     navBar: {
-        backgroundColor: 'green',
+        backgroundColor: 'seagreen',
         flex: 8, 
         flexDirection: 'row', 
         alignItems: 'center', 
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: 50,
         height: 50,
-        backgroundColor: 'lightgreen',
+        backgroundColor: 'darkgreen',
         justifyContent: 'center',
     },
     leftButton: {

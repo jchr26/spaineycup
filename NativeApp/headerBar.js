@@ -11,12 +11,12 @@ export default class HeaderBar extends Component {
         <View style={styles.headerBarContainer}>
             <View style={styles.headerAvatar}>
                <TouchableHighlight onPress={() => {Alert.alert('Profile')}}>
-                   <Image source={pic} style={{width: 26, height: 26}}/> 
+                   <Image source={require('./assets/loggedoutAvatar.png')} style={{width: 26, height: 31}}/> 
                </TouchableHighlight>
             </View>
             <View style={styles.logoTrophy}>
-               <Image source={pic} style={{marginTop: 20, width: 30, height: 30}}/> 
-               <Text style={{ color: 'white'}}>Spainey Cup 2018</Text>
+               <Image source={require('./assets/trophy_icon.png')} style={{marginTop: 20, width: 30, height: 30}}/> 
+               <Text style={{ color: 'white', marginBottom: 4}}>Spainey Cup 2018</Text>
             </View>
             <View style={styles.rightNav}>
                <TouchableHighlight onPress={() => {Alert.alert('Nav')}}>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'seagreen'
     },
     logoTrophy: {
-        flex: 2,
+        flex: 3,
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
         flex: 2,
         flexDirection: 'row',
         alignItems: 'flex-end',
-        width: 50,
         height: 50,
         marginLeft: 10,
     },
@@ -60,7 +59,6 @@ const styles = StyleSheet.create({
         flex: 2,
         flexDirection: 'column',
         alignItems: 'flex-end',
-        width: 50,
         height: 50,
         marginRight: 10,
     },
