@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: 'green',
-        backgroundColor: 'darkseagreen'
+         backgroundColor: 'darkseagreen'
     },
 });
