@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import { AppRegistry, Image, Text, View, StyleSheet } from 'react-native';
-import NavigationBar from './navigationBar';
-import TopNavigationBar from './topNavigationBar';
+import { AppRegistry, Image, Text, View, StyleSheet, Button, Alert, ScrollView } from 'react-native';
 import HeaderBar from './headerBar';
 
 export default class SpaineyCupMainPage extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-        data:[]
+        data:[],
+		section: 'News'
     }
+
+	this.handleSectionChange = this.handleSectionChange.bind(this);
+  }
+
+  handleSectionChange(sectionSelected){
+	this.setState({
+		section: sectionSelected
+    });
   }
 
   getData(){
@@ -39,13 +46,21 @@ export default class SpaineyCupMainPage extends Component {
                 <HeaderBar/>
             </View>
             <View style={{flex: 2, backgroundColor: 'darkgreen'}}>
-                <TopNavigationBar/>
+                <TopNavigationBar 
+					navSection={this.state.section}
+					onSectionChange={this.handleSectionChange}
+				/>
             </View>
             <View style={{flex: 28, backgroundColor: 'lightgreen'}}>
-                <Text style={styles.playerName}>{name}</Text>
+				<ContentContainer
+					navSection={this.state.section}
+					onSectionChange={this.handleSectionChange}
+				/>
             </View>
         </View>
     );
+
+				//<Text style={styles.playerName}>{name}</Text>
     } catch(error) {
         console.error(error);
 
@@ -53,7 +68,115 @@ export default class SpaineyCupMainPage extends Component {
   }
 }
 
+class ContentContainer extends Component {
+	
+	constructor(props){
+		super(props);
+	}
+
+	render() {
+	    const NEWS = 'News';
+	    let contentWidget = '';
+
+		if (this.props.navSection == "News") {
+			contentWidget = <NewsWidget/>;
+		} 
+		else if (this.props.navSection == "Players") {
+			contentWidget = <PlayersWidget/>;
+		}
+		else {
+			contentWidget = <Text style={styles.playerName}>{this.props.navSection}</Text>;
+		}	
+	 
+		return (
+			<View style={{flex: 1}}>
+				{contentWidget}
+			</View>
+		)
+	}
+}
+
+class NewsWidget extends Component {
+	constructor(props){
+		super(props);
+	}
+	render() {
+		return (
+			<View style={{flex: 1}}>
+				<Text style={styles.playerName}>Rendered NewsWidget</Text>
+			</View>
+		)
+	}
+}
+
+class PlayersWidget extends Component {
+	constructor(props){
+		super(props);
+	}
+	render() {
+		return (
+			<View style={{flex: 1}}>
+				<Text style={styles.playerName}>Rendered PlayersWidget</Text>
+			</View>
+		)
+	}
+}
+
+class TopNavigationBar extends Component {
+
+  constructor(props){
+	super(props);
+  } 
+
+  handleSectionChange(sectionName){
+	console.log('set nav value:' + sectionName);
+    this.props.onSectionChange(sectionName);
+  }
+
+  render() {
+    return (
+        <ScrollView style={{flex: 1}} horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View style={styles.buttonContainer}>
+                <Button color='white' onPress={() => { this.handleSectionChange('News') }} title="News"/>
+				<View style={{width: 1, backgroundColor: 'white'}}/>
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button color='white' onPress={() => { this.handleSectionChange('Players') }} value={this.props.navSection} title="Players"/>
+				<View style={{width: 1, backgroundColor: 'white'}}/>
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button color='white' onPress={() => { this.handleSectionChange('Scores') }} title="Scores"/>
+				<View style={{width: 1, backgroundColor: 'white'}}/>
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button color='white' onPress={() => { this.handleSectionChange('Clips') }} title="Clips"/>
+				<View style={{width: 1, backgroundColor: 'white'}}/>
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button color='white' onPress={() => { this.handleSectionChange('Gallery') }} title="Gallery"/>
+				<View style={{width: 1, backgroundColor: 'white'}}/>
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button color='white' onPress={() => { this.handleSectionChange('Trivia') }} title="Trivia"/>
+				<View style={{width: 1, backgroundColor: 'white'}}/>
+            </View>
+        </ScrollView>
+    );
+    }
+}
+
 const styles = StyleSheet.create({
+    buttonContainer: {
+        backgroundColor: 'darkgreen',
+		flex: 1,
+		flexDirection: 'row',
+    },
+	buttonStyle: {
+		width: 150,
+	},
+	buttonContainerSelected: {
+		
+	},
     playerName: {
         flex: 2,
         color: 'green',
