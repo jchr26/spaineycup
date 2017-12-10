@@ -8,6 +8,7 @@ export default class SpaineyCupMainPage extends Component {
     super(props);
     this.state = {
         data:[],
+        newsData:[],
 		section: 'News'
     }
 
@@ -20,11 +21,12 @@ export default class SpaineyCupMainPage extends Component {
     });
   }
 
-  getData(){
-    return fetch('http://127.0.0.1:8080/players/1')
+  getPlayerData(){
+    return fetch('http://127.0.0.1:8080/players/2')
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({data: responseJson.player.name});
+        this.setState({data: responseJson.player});
+        console.log('player' + responseJson.player);
       })
       .catch((error) => {
         console.debug(error);
@@ -32,13 +34,27 @@ export default class SpaineyCupMainPage extends Component {
       });
   }
 
+  getNewsData(){
+    return fetch('http://127.0.0.1:8080/newsItems')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({newsData: responseJson});
+        console.log('newsItems' + responseJson);
+        console.log('newsItem:' + responseJson[0].title);
+      })
+      .catch((error) => {
+        console.debug(error);
+        this.setState({newsData: ""});
+      });
+  }
+
   componentDidMount(){
-    this.getData();
+    this.getPlayerData();
+    this.getNewsData();
   }
 
   render() {
     try {
-        let name = this.state.data;
 
     return (
         <View style={{flex: 1}}>
@@ -54,13 +70,14 @@ export default class SpaineyCupMainPage extends Component {
             <View style={{flex: 28, backgroundColor: 'lightgreen'}}>
 				<ContentContainer
 					navSection={this.state.section}
+                    sectionData={this.state.data}
+                    newsData={this.state.newsData}
 					onSectionChange={this.handleSectionChange}
 				/>
             </View>
         </View>
     );
 
-				//<Text style={styles.playerName}>{name}</Text>
     } catch(error) {
         console.error(error);
 
@@ -79,10 +96,12 @@ class ContentContainer extends Component {
 	    let contentWidget = '';
 
 		if (this.props.navSection == "News") {
-			contentWidget = <NewsWidget/>;
+			contentWidget = <NewsWidget
+                                newsData={this.props.newsData} />;
 		} 
 		else if (this.props.navSection == "Players") {
-			contentWidget = <PlayersWidget/>;
+			contentWidget = <PlayersWidget
+                                sectionData={this.props.sectionData} />;
 		}
 		else {
 			contentWidget = <Text style={styles.playerName}>{this.props.navSection}</Text>;
@@ -96,15 +115,83 @@ class ContentContainer extends Component {
 	}
 }
 
+class NewsStorySummary extends Component {
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            <View style={styles.storyList}>
+                <View style={styles.storyListImage}>
+                    <Image source={require('./assets/loggedoutAvatar.png')} style={{width: 26, height: 31}}/>
+                </View>
+                <View style={styles.storyListTitleDate}>
+                    <Text style={styles.storyListTitle}>{this.props.storyTitle}</Text>
+                    <Text style={styles.storyListDate}>{this.props.storyDate}</Text>
+                </View>
+            </View>
+        );
+    }
+}
+
+class NewsStoryDetail extends Component {
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            <View style={styles.storyDetailBox}>
+                    <Image source={require('./assets/loggedoutAvatar.png')} style={{width: 26, height: 31}}/>
+                    <Text style={styles.storyTitle}>{this.props.storyTitle}</Text>
+                    <Text style={styles.storyBody}>{this.props.storyBody}</Text>
+                    <Text style={styles.storyDate}>{this.props.storyDate}</Text>
+            </View>
+        );
+    }
+}
+
 class NewsWidget extends Component {
 	constructor(props){
 		super(props);
 	}
+
 	render() {
+        let stories = this.props.newsData;
+        var storyList = [];
+        var defaultStory;
+        for (var i = 0; i < stories.length; i++){
+            storyList.push(
+                <NewsStorySummary
+                    storyTitle={stories[i].title}
+                    storyHeroImage={stories[i].imgUrl}
+                    storyDate={stories[i].date} 
+                    key={i}
+                    />
+            );
+            if (i == 0) {
+                defaultStory = <NewsStoryDetail
+                                   storyTitle={stories[0].title}
+                                   storyHeroImage={stories[0].imgUrl}
+                                   storyBody={stories[0].story}
+                                   storyDate={stories[0].date}
+                               />;
+            }
+        }
+
+    
 		return (
 			<View style={{flex: 1}}>
-				<Text style={styles.playerName}>Rendered NewsWidget</Text>
-			</View>
+                <View style={{flex: 1}}>
+                    <ScrollView>
+                        {defaultStory}
+                    </ScrollView>
+                </View>
+                <View style={{flex: 1}}>
+                    <ScrollView>
+                        {storyList}
+                    </ScrollView>
+			    </View>
+            </View>
 		)
 	}
 }
@@ -114,9 +201,18 @@ class PlayersWidget extends Component {
 		super(props);
 	}
 	render() {
+        let player = this.props.sectionData;
 		return (
 			<View style={{flex: 1}}>
-				<Text style={styles.playerName}>Rendered PlayersWidget</Text>
+				<View style={styles.playerImageContainer}>
+				    <Text>Rendered PlayersWidget</Text>
+                </View>
+				<View style={styles.playerInfoContainer}>
+                    <Text style={styles.playerName}>{player.name}</Text>
+                    <Text style={styles.playerBio}>{player.bio}</Text>
+                    <Text style={styles.playerHandicap}>Handicap: {player.handicap}</Text>
+                    <Text style={styles.playerHandicap}>Born: {player.dob}</Text>
+                </View>
 			</View>
 		)
 	}
@@ -178,13 +274,143 @@ const styles = StyleSheet.create({
 		
 	},
     playerName: {
-        flex: 2,
+        flex: 1,
         color: 'green',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 18,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+    },
+    playerBio: {
+        flex: 10,
+        color: 'darkgreen',
+        fontSize: 16,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+    },
+    playerHandicap: {
+        color: 'darkgreen',
+        fontSize: 16,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+    },
+    playerImageContainer: {
+        flex: 2,
+        borderStyle: 'solid',
+        borderWidth: 2,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+        borderColor: 'seagreen',
+        backgroundColor: 'lightgreen'
+    },
+    playerInfoContainer: {
+        flex: 2,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        borderStyle: 'solid',
+        borderWidth: 2,
+        marginTop: 0,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+        borderColor: 'seagreen',
+        backgroundColor: 'lightgreen'
+    },
+    storyList: {
+        flex: 1,
+        flexDirection: 'row',
+        borderStyle: 'solid',
+        borderWidth: 2,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+        borderColor: 'seagreen',
+        backgroundColor: '#ccffcc'
+    },
+    storyListImage: {
+        borderStyle: 'solid',
+        borderWidth: 2,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+        width: 150,
+        height: 100,
+        borderColor: 'black',
+        backgroundColor: 'white'
+    },
+    storyDetailBox: {
+        flexWrap: 'wrap',
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: 'green',
-         backgroundColor: 'darkseagreen'
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+        borderColor: 'black',
+        backgroundColor: 'white'
+    },
+    storyListTitleDate: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+    },
+    storyListTitle: {
+        flex: 1,
+        flexWrap: 'wrap',
+        fontWeight: 'bold',
+        color: 'black',
+        fontSize: 16,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+    },
+    storyListDate: {
+        flexWrap: 'wrap',
+        color: 'black',
+        fontSize: 14,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+    },
+    storyDate: {
+        flexWrap: 'wrap',
+        color: 'black',
+        fontSize: 14,
+        marginTop: 14,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+    },
+    storyBody: {
+        flex: 1,
+        flexWrap: 'wrap',
+        fontSize: 16,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
+    },
+    storyTitle: {
+        flex: 1,
+        flexWrap: 'wrap',
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 18,
+        marginTop: 2,
+        marginBottom: 2,
+        marginLeft: 2,
+        marginRight: 2,
     },
 });

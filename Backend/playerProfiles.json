@@ -13,4 +13,12 @@
     "handicap": 18,
     "bio": "Rumour has it his putter has to be fire-proofed at least once a month, due to how hot it gets. Highest position in a Spainey Cup is 4th in 2017. Jim has his sights set on the prize this year.",
     "imgUrl": "http://img.url/player/jim/profile.jpg"
+},
+{
+    "id":3, 
+    "name":"Matt Edge", 
+    "dob": "4/5/82",
+    "handicap": 12,
+    "bio": "Known for his irrepresible sense of humour and style, Edgey has a beef this year with Iain 'Macca' Mackenzie who nudged him out of contention for a nail-biting Masters victory in 2017. Matt won't let such history put him off his stride and this year he's out for blood. Or at the very least to put the local curry house out of business with one of his legendary Trip Advisor reviews.",
+    "imgUrl": "http://img.url/player/edgey/profile.jpg"
 }]
