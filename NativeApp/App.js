@@ -123,7 +123,7 @@ class NewsStorySummary extends Component {
         return (
             <View style={styles.storyList}>
                 <View style={styles.storyListImage}>
-                    <Image source={require('./assets/loggedoutAvatar.png')} style={{width: 26, height: 31}}/>
+                    <Image source={require('./assets/newsStory1.jpg')} style={{width: 116, height: 56}}/>
                 </View>
                 <View style={styles.storyListTitleDate}>
                     <Text style={styles.storyListTitle}>{this.props.storyTitle}</Text>
@@ -139,9 +139,10 @@ class NewsStoryDetail extends Component {
         super(props);
     }
     render(){
+        let storyImage = this.props.storyHeroImage;
         return (
             <View style={styles.storyDetailBox}>
-                    <Image source={require('./assets/loggedoutAvatar.png')} style={{width: 26, height: 31}}/>
+                    <Image source={require('./assets/newsStory1.jpg')} style={{width: 361, height: 179}}/>
                     <Text style={styles.storyTitle}>{this.props.storyTitle}</Text>
                     <Text style={styles.storyBody}>{this.props.storyBody}</Text>
                     <Text style={styles.storyDate}>{this.props.storyDate}</Text>
@@ -181,7 +182,7 @@ class NewsWidget extends Component {
     
 		return (
 			<View style={{flex: 1}}>
-                <View style={{flex: 1}}>
+                <View style={{flex: 2, marginBottom: 4}}>
                     <ScrollView>
                         {defaultStory}
                     </ScrollView>
@@ -329,10 +330,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderStyle: 'solid',
         borderWidth: 2,
-        marginTop: 2,
-        marginBottom: 2,
-        marginLeft: 2,
-        marginRight: 2,
+        marginTop: 1,
+        marginBottom: 1,
+        marginLeft: 6,
+        marginRight: 6,
         borderColor: 'seagreen',
         backgroundColor: '#ccffcc'
     },
@@ -343,8 +344,8 @@ const styles = StyleSheet.create({
         marginBottom: 2,
         marginLeft: 2,
         marginRight: 2,
-        width: 150,
-        height: 100,
+        width: 120,
+        height: 60,
         borderColor: 'black',
         backgroundColor: 'white'
     },
@@ -352,10 +353,10 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         borderStyle: 'solid',
         borderWidth: 1,
-        marginTop: 2,
-        marginBottom: 2,
-        marginLeft: 2,
-        marginRight: 2,
+        marginTop: 6,
+        marginBottom: 6,
+        marginLeft: 6,
+        marginRight: 6,
         borderColor: 'black',
         backgroundColor: 'white'
     },

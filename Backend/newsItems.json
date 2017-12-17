@@ -3,7 +3,7 @@
     "title":"Bennett makes full recovery", 
     "date": "23/11/17",
     "story": "'Disco' Dave Bennett is rumoured to be fighting fit again after being laid up for the 2017 Spainey Cup with a dubious football related injury, which some suspected was actually self-inflicted during a Bee Gee's dance marathon event Dave was hosting in some cool Shoreditch micro-brewery.\n\nBennett has been pictured hitting the driving range in recent weeks, warming up for the 2018 season. His accuracy and distance have been generating murmurs in the clubhouse that he's up to his old tricks. Disco fans will recall Bennett's 2001 fall from grace when he was photographed selling EPO to Tiger Woods from the back of his Hummer.\n\nTime will tell if Disco Dave's recovery is going to see him return to his previous 'clean' form and his army of loyal fans will surely be in force in the Golfer's Rest this year, eagerly waiting for Snake Hips to weave his way onto the lino and carve some shapes.",
-    "imgUrl": "http://img.url/news/1/newspic.jpg"
+    "imgUrl": "http://localhost:8080/assets/newsStory1.jpg"
 },
 {
     "id":2, 
