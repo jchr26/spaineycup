@@ -185,7 +185,7 @@ class NewsWidget extends Component {
             let newsItemId = i;
             
             storyList.push(
-                <TouchableOpacity onPress={() => {this.refs._storyScrollView.scrollTo({x:0, y:0, animated: true});this.props.onNewsItemIdChange(newsItemId)}} key={i} >
+                <TouchableOpacity onPress={() => {this.props.onNewsItemIdChange(newsItemId);this.refs._storyScrollView.scrollTo({x:0, y:0, animated: false})}} key={i} >
                 <NewsStorySummary
                     storyTitle={stories[i].title}
                     storyHeroImage={stories[i].imgUrl}
