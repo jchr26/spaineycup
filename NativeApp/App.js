@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Image, Text, View, StyleSheet, Button, Alert, ScrollView } from 'react-native';
+import { AppRegistry, Image, Text, View, StyleSheet, Button, Alert, ScrollView, TouchableOpacity } from 'react-native';
 import HeaderBar from './headerBar';
 
 export default class SpaineyCupMainPage extends Component {
@@ -9,15 +9,24 @@ export default class SpaineyCupMainPage extends Component {
     this.state = {
         data:[],
         newsData:[],
+		newsItemId: 0,
 		section: 'News'
     }
 
 	this.handleSectionChange = this.handleSectionChange.bind(this);
+	this.handleNewsItemIdChange = this.handleNewsItemIdChange.bind(this);
   }
 
   handleSectionChange(sectionSelected){
 	this.setState({
 		section: sectionSelected
+    });
+  }
+
+  handleNewsItemIdChange(newsItemId){
+    console.log('Setting newsItemId state:' + newsItemId);
+	this.setState({
+		newsItemId: newsItemId
     });
   }
 
@@ -72,7 +81,9 @@ export default class SpaineyCupMainPage extends Component {
 					navSection={this.state.section}
                     sectionData={this.state.data}
                     newsData={this.state.newsData}
+                    newsItemId={this.state.newsItemId}
 					onSectionChange={this.handleSectionChange}
+					onNewsItemIdChange={this.handleNewsItemIdChange}
 				/>
             </View>
         </View>
@@ -89,7 +100,12 @@ class ContentContainer extends Component {
 	
 	constructor(props){
 		super(props);
+	    this.handleNewsItemChange = this.handleNewsItemChange.bind(this);
 	}
+
+    handleNewsItemChange(newsItemId){
+        this.props.onNewsItemIdChange(newsItemId);
+    }
 
 	render() {
 	    const NEWS = 'News';
@@ -97,7 +113,11 @@ class ContentContainer extends Component {
 
 		if (this.props.navSection == "News") {
 			contentWidget = <NewsWidget
-                                newsData={this.props.newsData} />;
+                                newsData={this.props.newsData}
+                                newsItemId={this.props.newsItemId}  
+					            onNewsItemIdChange={this.handleNewsItemChange}
+                            />;
+
 		} 
 		else if (this.props.navSection == "Players") {
 			contentWidget = <PlayersWidget
@@ -155,40 +175,44 @@ class NewsWidget extends Component {
 	constructor(props){
 		super(props);
 	}
-
+    
 	render() {
         let stories = this.props.newsData;
         var storyList = [];
-        var defaultStory;
+        var defaultStoryId = this.props.newsItemId;
+
         for (var i = 0; i < stories.length; i++){
+            let newsItemId = i;
+            
             storyList.push(
+                <TouchableOpacity onPress={() => {this.refs._storyScrollView.scrollTo({x:0, y:0, animated: true});this.props.onNewsItemIdChange(newsItemId)}} key={i} >
                 <NewsStorySummary
                     storyTitle={stories[i].title}
                     storyHeroImage={stories[i].imgUrl}
                     storyDate={stories[i].date} 
-                    key={i}
                     />
+                </TouchableOpacity>
             );
-            if (i == 0) {
-                defaultStory = <NewsStoryDetail
-                                   storyTitle={stories[0].title}
-                                   storyHeroImage={stories[0].imgUrl}
-                                   storyBody={stories[0].story}
-                                   storyDate={stories[0].date}
-                               />;
-            }
+
+            var defaultStory = 
+                        <NewsStoryDetail
+                             storyTitle={stories[defaultStoryId].title}
+                             storyHeroImage={stories[defaultStoryId].imgUrl}
+                             storyBody={stories[defaultStoryId].story}
+                             storyDate={stories[defaultStoryId].date}
+                        />;
         }
 
     
 		return (
 			<View style={{flex: 1}}>
                 <View style={{flex: 2, marginBottom: 4}}>
-                    <ScrollView>
+                    <ScrollView ref='_storyScrollView'>
                         {defaultStory}
                     </ScrollView>
                 </View>
                 <View style={{flex: 1}}>
-                    <ScrollView>
+                    <ScrollView ref='_storyListScrollView'>
                         {storyList}
                     </ScrollView>
 			    </View>
@@ -226,7 +250,6 @@ class TopNavigationBar extends Component {
   } 
 
   handleSectionChange(sectionName){
-	console.log('set nav value:' + sectionName);
     this.props.onSectionChange(sectionName);
   }
 
