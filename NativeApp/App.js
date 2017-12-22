@@ -140,10 +140,11 @@ class NewsStorySummary extends Component {
         super(props);
     }
     render(){
+        let storyImage = { uri: this.props.storyHeroImage.url };
         return (
             <View style={styles.storyList}>
                 <View style={styles.storyListImage}>
-                    <Image source={require('./assets/newsStory1.jpg')} style={{width: 116, height: 56}}/>
+                    <Image source={storyImage} style={{width: 116, height: 56}}/>
                 </View>
                 <View style={styles.storyListTitleDate}>
                     <Text style={styles.storyListTitle}>{this.props.storyTitle}</Text>
@@ -159,10 +160,11 @@ class NewsStoryDetail extends Component {
         super(props);
     }
     render(){
-        let storyImage = this.props.storyHeroImage;
+        let storyMainImage = { uri: this.props.storyMainImage.url };
+        console.log('storyMainImage:' + this.props.storyMainImage.url);
         return (
             <View style={styles.storyDetailBox}>
-                    <Image source={require('./assets/newsStory1.jpg')} style={{width: 361, height: 179}}/>
+                    <Image source={storyMainImage} style={{width: this.props.storyMainImage.width, height: this.props.storyMainImage.height}} />
                     <Text style={styles.storyTitle}>{this.props.storyTitle}</Text>
                     <Text style={styles.storyBody}>{this.props.storyBody}</Text>
                     <Text style={styles.storyDate}>{this.props.storyDate}</Text>
@@ -188,7 +190,8 @@ class NewsWidget extends Component {
                 <TouchableOpacity onPress={() => {this.props.onNewsItemIdChange(newsItemId);this.refs._storyScrollView.scrollTo({x:0, y:0, animated: false})}} key={i} >
                 <NewsStorySummary
                     storyTitle={stories[i].title}
-                    storyHeroImage={stories[i].imgUrl}
+                    storyHeroImage={stories[i].imgUrlHero}
+                    storyMainImage={stories[i].imgUrlMain}
                     storyDate={stories[i].date} 
                     />
                 </TouchableOpacity>
@@ -197,7 +200,8 @@ class NewsWidget extends Component {
             var defaultStory = 
                         <NewsStoryDetail
                              storyTitle={stories[defaultStoryId].title}
-                             storyHeroImage={stories[defaultStoryId].imgUrl}
+                             storyHeroImage={stories[defaultStoryId].imgUrlHero}
+                             storyMainImage={stories[defaultStoryId].imgUrlMain}
                              storyBody={stories[defaultStoryId].story}
                              storyDate={stories[defaultStoryId].date}
                         />;
