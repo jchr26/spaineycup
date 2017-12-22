@@ -3,33 +3,62 @@
     "title":"Bennett makes full recovery", 
     "date": "23/11/17",
     "story": "'Disco' Dave Bennett is rumoured to be fighting fit again after being laid up for the 2017 Spainey Cup with a dubious football related injury, which some suspected was actually self-inflicted during a Bee Gee's dance marathon event Dave was hosting in some cool Shoreditch micro-brewery.\n\nBennett has been pictured hitting the driving range in recent weeks, warming up for the 2018 season. His accuracy and distance have been generating murmurs in the clubhouse that he's up to his old tricks. Disco fans will recall Bennett's 2001 fall from grace when he was photographed selling EPO to Tiger Woods from the back of his Hummer.\n\nTime will tell if Disco Dave's recovery is going to see him return to his previous 'clean' form and his army of loyal fans will surely be in force in the Golfer's Rest this year, eagerly waiting for Snake Hips to weave his way onto the lino and carve some shapes.",
-    "imgUrl": "http://localhost:8080/assets/newsStory1.jpg"
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/newsStory1.jpg",
+        "width": 361,
+        "height": 179
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/newsStory1.jpg",
+        "width": 361,
+        "height": 179 
+    }
 },
 {
     "id":2, 
     "title":"Legal blindness no excuse", 
     "date": "3/2/18",
-    "story": "2016 Spainey Cup bandit Neil 'Derrick' Cartmel has been pleading with the R&A to double his official handicap due to his legal blindness. The R&A have declined to comment despite Cartmell having been seen tapping a white stick up and down the street outside their offices.\n\nDerrick is known for his flamboyant style and aggression around the greens. What he lacks in finess he makes up for in sheer underhandedness. One year he bought all the Kit Kats in the pro shop at Dunbar and proceeded to snap the choccolatey fingers as loud as he could every time his nemesis, and competition namesake, Luke Spaine lined up his putts.\n\nWhatever tactics Derrick is planning to reclaim the Spainey Cup this year, one thing is for sure, his legal blindness won't hold any sympathy from his peers and they'll be watching him like a hawk.",
-    "imgUrl": "http://img.url/news/2/newspic.jpg"
+    "story": "2016 Spainey Cup bandit Neil 'Derrick' Cartmell has been pleading with the R&A to double his official handicap due to his legal blindness. The R&A have declined to comment despite Cartmell having been seen tapping a white stick up and down the street outside their offices.\n\nDerrick is known for his flamboyant style and aggression around the greens. What he lacks in finess he makes up for in sheer underhandedness. One year he bought all the Kit Kats in the pro shop at Dunbar and proceeded to snap the choccolatey fingers as loud as he could every time his nemesis, and competition namesake, Luke Spaine lined up his putts.\n\nWhatever tactics Derrick is planning to reclaim the Spainey Cup this year, one thing is for sure, his legal blindness won't hold any sympathy from his peers and they'll be watching him like a hawk.",
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/derrick.jpg",
+        "width": 361,
+        "height": 179
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/derrick.jpg",
+        "width": 361,
+        "height": 179
+    }
 },
 {
     "id":3, 
     "title":"Calzone Kid: Green eyed monster", 
     "date": "7/1/18",
     "story": "The opening major of the Spainey Cup conjures up all manner of inspired play, and last year a train signal failure in Dunbar caused the location to be moved at the last minute, from its traditional location at Glen to Gullane. After hooking his tee shot into the driving range along side Jim 'The Sandman' Christy, it was debutante Iain Mackenzie who shot to glory on day one in 2017 by nudging Matt Edge out of position one.\n\nMackenzie has been basking in his own glory all year and never fails to point out to his playing partners that he out drove them with his tee shot using a £3 3-iron from Scope in North Berwick.",
-    "imgUrl": "http://img.url/news/2/newspic.jpg"
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/calzone-hero.jpg",
+        "width": 361,
+        "height": 179
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/calzone-main.jpg",
+        "width": 361,
+        "height": 361
+    }
 },
 {
     "id":4, 
     "title":"Hunting license not required", 
     "date": "3/12/17",
     "story": "blah blah blah",
-    "imgUrl": "http://img.url/news/2/newspic.jpg"
+    "imgUrlHero": "http://localhost:8080/images/newsStory1.jpg",
+    "imgUrlMain": "http://localhost:8080/images/newsStory1.jpg"
 },
 {
     "id":5, 
     "title":"Golfer's Rest bans 'Danny Laggers'", 
     "date": "3/12/17",
     "story": "The favoured formal attire for the Matts, Edge and Leeson, has been given the heave-ho by the Golfer's Rest. \"We're not having any of that in here again this year\", said the landlord of the North Berwick alehouse. Last year they came in with their turn ups up to their calves and white ladies tennis socks on. The year before it was that bloody green jacket! Well we're sick of it. If they want to have a fashion show they can fuck off back to London! We're a serious pub and we want our locals to be able to come in here and get off their nuts on Tizer and Ketamine without feeling like they have to wear their girlfriend's fucking boob tube\".\n\nThe turn ups in question, sported by the Matts last year, are apparently known in Shoreditch as 'Danny Laggers'. Keen fashionista Matt Leeson responded to the Golfer's Rest landlord's threat with a brutal tweet which he later deleted following advice from his management. The tweet apparently suggested the landlord take the pool cues, which have seen better days, and insert them into his rectum such that it would be impossible for them to gain access to any sunlight. When asked about the tweet in question a downcast Leeson responded '\"It was just a bit of fun. All we want to do is play golf and drink in their pub afterwards, wearing what we normally wear. Nobody complains that Derrick is wearing a fucking Fruit of the Loom t-shirt. That's just fucking fine, we'll have to go to the Auld Hoose this year and risk getting batterd by Rab C Nesbitt I suppose\".",
-    "imgUrl": "http://img.url/news/2/newspic.jpg"
+    "imgUrlHero": "http://localhost:8080/images/newsStory1.jpg",
+    "imgUrlMain": "http://localhost:8080/images/newsStory1.jpg"
 }]
