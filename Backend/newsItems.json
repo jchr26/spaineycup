@@ -59,6 +59,14 @@
     "title":"Golfer's Rest bans 'Danny Laggers'", 
     "date": "3/12/17",
     "story": "The favoured formal attire for the Matts, Edge and Leeson, has been given the heave-ho by the Golfer's Rest. \"We're not having any of that in here again this year\", said the landlord of the North Berwick alehouse. Last year they came in with their turn ups up to their calves and white ladies tennis socks on. The year before it was that bloody green jacket! Well we're sick of it. If they want to have a fashion show they can fuck off back to London! We're a serious pub and we want our locals to be able to come in here and get off their nuts on Tizer and Ketamine without feeling like they have to wear their girlfriend's fucking boob tube\".\n\nThe turn ups in question, sported by the Matts last year, are apparently known in Shoreditch as 'Danny Laggers'. Keen fashionista Matt Leeson responded to the Golfer's Rest landlord's threat with a brutal tweet which he later deleted following advice from his management. The tweet apparently suggested the landlord take the pool cues, which have seen better days, and insert them into his rectum such that it would be impossible for them to gain access to any sunlight. When asked about the tweet in question a downcast Leeson responded '\"It was just a bit of fun. All we want to do is play golf and drink in their pub afterwards, wearing what we normally wear. Nobody complains that Derrick is wearing a fucking Fruit of the Loom t-shirt. That's just fucking fine, we'll have to go to the Auld Hoose this year and risk getting batterd by Rab C Nesbitt I suppose\".",
-    "imgUrlHero": "http://localhost:8080/images/newsStory1.jpg",
-    "imgUrlMain": "http://localhost:8080/images/newsStory1.jpg"
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/laggers-hero.jpg",
+        "width": 361,
+        "height": 179
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/laggers-main.jpg",
+        "width": 361,
+        "height": 361
+    }
 }]
