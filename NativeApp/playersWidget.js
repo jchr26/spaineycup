@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, ScrollView } from 'react-native';
 import styles from './Styles'
 
 export default class PlayersWidget extends Component {
@@ -7,12 +7,14 @@ export default class PlayersWidget extends Component {
 		super(props);
 	}
 	render() {
-        let player = this.props.sectionData;
+        let player = this.props.playerData;
 		return (
 			<View style={{flex: 1}}>
-				<View style={styles.playerImageContainer}>
-				    <Text>Rendered PlayersWidget</Text>
-                </View>
+                <View style={{flex: 1}}>
+                    <ScrollView horizontal={true} ref='_playerImageListView'>
+                        
+                    </ScrollView>
+			    </View>
 				<View style={styles.playerInfoContainer}>
                     <Text style={styles.playerName}>{player.name}</Text>
                     <Text style={styles.playerBio}>{player.bio}</Text>

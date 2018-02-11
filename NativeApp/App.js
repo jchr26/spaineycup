@@ -39,12 +39,12 @@ export default class SpaineyCupMainPage extends Component {
     return fetch('http://127.0.0.1:8080/players/2')
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({data: responseJson.player});
+        this.setState({playerData: responseJson.player});
         console.log('player' + responseJson.player);
       })
       .catch((error) => {
         console.debug(error);
-        this.setState({data: ""});
+        this.setState({playerData: ""});
       });
   }
 
@@ -84,7 +84,7 @@ export default class SpaineyCupMainPage extends Component {
             <View style={{flex: 28, backgroundColor: 'lightgreen'}}>
 				<ContentContainer
 					navSection={this.state.section}
-                    sectionData={this.state.data}
+                    playerData={this.state.playerData}
                     newsData={this.state.newsData}
                     newsItemId={this.state.newsItemId}
 					onSectionChange={this.handleSectionChange}
@@ -126,7 +126,7 @@ class ContentContainer extends Component {
 		} 
 		else if (this.props.navSection == "Players") {
 			contentWidget = <PlayersWidget
-                                sectionData={this.props.sectionData} />;
+                                playerData={this.props.playerData} />;
 		}
 		else {
 			contentWidget = <Text style={styles.playerName}>{this.props.navSection}</Text>;
