@@ -5,7 +5,7 @@ var restify = require('restify');
 var server = restify.createServer();
 
 server.get('/players/:playerId', players.getPlayer);
-server.head('/players/:playerId', players.getPlayer);
+server.get('/players', players.getPlayers);
 server.get('/newsItems/:newsItemId', newsItems.getNewsItem);
 server.get('/newsItems', newsItems.getNewsItems);
 

@@ -15,11 +15,13 @@ export default class SpaineyCupMainPage extends Component {
         data:[],
         newsData:[],
 		newsItemId: 0,
+		playerId: 0,
 		section: 'News'
     }
 
 	this.handleSectionChange = this.handleSectionChange.bind(this);
 	this.handleNewsItemIdChange = this.handleNewsItemIdChange.bind(this);
+	this.handlePlayerIdChange = this.handlePlayerIdChange.bind(this);
   }
 
   handleSectionChange(sectionSelected){
@@ -35,12 +37,20 @@ export default class SpaineyCupMainPage extends Component {
     });
   }
 
+  handlePlayerIdChange(newsItemId){
+    console.log('Setting playerId state:' + playerId);
+	this.setState({
+		playerId: playerId
+    });
+  }
+
   getPlayerData(){
-    return fetch('http://127.0.0.1:8080/players/2')
+    return fetch('http://127.0.0.1:8080/players')
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({playerData: responseJson.player});
-        console.log('player' + responseJson.player);
+        this.setState({playerData: responseJson});
+        console.log('players' + responseJson);
+        console.log('player' + responseJson[0].name);
       })
       .catch((error) => {
         console.debug(error);
@@ -85,10 +95,12 @@ export default class SpaineyCupMainPage extends Component {
 				<ContentContainer
 					navSection={this.state.section}
                     playerData={this.state.playerData}
+                    playerId={this.state.playerId}
                     newsData={this.state.newsData}
                     newsItemId={this.state.newsItemId}
 					onSectionChange={this.handleSectionChange}
 					onNewsItemIdChange={this.handleNewsItemIdChange}
+					onPlayerIdChange={this.handlePlayerIdChange}
 				/>
             </View>
         </View>
@@ -106,10 +118,15 @@ class ContentContainer extends Component {
 	constructor(props){
 		super(props);
 	    this.handleNewsItemChange = this.handleNewsItemChange.bind(this);
+	    this.handlePlayerChange = this.handlePlayerChange.bind(this);
 	}
 
     handleNewsItemChange(newsItemId){
         this.props.onNewsItemIdChange(newsItemId);
+    }
+
+    handlePlayerChange(playerId){
+        this.props.onPlayerIdChange(playerId);
     }
 
 	render() {
@@ -126,7 +143,11 @@ class ContentContainer extends Component {
 		} 
 		else if (this.props.navSection == "Players") {
 			contentWidget = <PlayersWidget
-                                playerData={this.props.playerData} />;
+                                playerData={this.props.playerData} 
+                                playerId={this.props.playerId}  
+					            onPlayerIdChange={this.handlePlayerChange}
+
+                            />;
 		}
 		else {
 			contentWidget = <Text style={styles.playerName}>{this.props.navSection}</Text>;

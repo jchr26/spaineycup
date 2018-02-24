@@ -17,6 +17,15 @@ exports.readPlayerData = function(playerId) {
     }
 }
 
+exports.readPlayers = function() {
+    try {
+        obj = JSON.parse(fs.readFileSync('playerProfiles.json', 'utf8'));
+        return obj;
+    } catch(e) {
+        console.log("Data Corrupted" + e);
+    }
+}
+
 exports.readNewsItem = function(newsItemId) {
     try {
         obj = JSON.parse(fs.readFileSync('newsItems.json', 'utf8'));

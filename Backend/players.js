@@ -16,3 +16,11 @@ exports.getPlayer = function(req, res, next){
     console.log(playerData);
     next();
 }
+
+exports.getPlayers = function(req, res, next){
+    var players = readJSON.readPlayers();
+    res.send(players);
+
+    console.log(players);
+    next();
+}
