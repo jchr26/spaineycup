@@ -17,8 +17,8 @@ export default class PlayersWidget extends Component {
             let playerId = i;
             
             playerList.push(
-                <TouchableOpacity onPress={() => {this.props.onPlayerChange(playerId);this.refs._playerImageListView.scrollTo({x:0, y:0, animated: false})}} key={i} >
-                <PlayerBioSummary
+                <TouchableOpacity onPress={() => {this.props.onPlayerIdChange(playerId);this.refs._playerBioScrollView.scrollTo({x:0, y:0, animated: false})}} key={i} >
+                <PlayerBioSummary 
                     playerName={players[i].name}
                     playerHeroImage={players[i].imgUrlHero}
                     />
@@ -27,6 +27,7 @@ export default class PlayersWidget extends Component {
             var defaultPlayer = 
                     <PlayerBioDetail
                          playerName={players[defaultPlayerId].name}
+                         playerNickName={players[defaultPlayerId].nickname}
                          playerMainImage={players[defaultPlayerId].imgUrlMain}
                          playerBio={players[defaultPlayerId].bio}
                     />;
@@ -34,8 +35,8 @@ export default class PlayersWidget extends Component {
 
 		return (
 			<View style={{flex: 1}}>
-                <View style={{flex: 1, marginBottom: 4, marginTop: 2}}>
-                    <ScrollView horizontal={true} ref='_playerImageListView'>
+                <View style={{flex: 1, marginBottom: 2, marginTop: 2}}>
+                    <ScrollView horizontal={true} ref='_playerImageListView' showsHorizontalScrollIndicator={false}>
                         {playerList}
                     </ScrollView>
                 </View>

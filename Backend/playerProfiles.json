@@ -1,16 +1,17 @@
 [{
     "id":1, 
     "name":"Luke Spaine", 
+    "nickname":"Spainey", 
     "dob": "23/4/80",
     "handicap": 8,
     "bio": "Namesake of the Spainey Cup and a legend on the circuit, Luke 'The Power' Spaine is always in contention and can regularly be spotted in the Golfer's Rest ordering round after round of Vodka & Irn Bru for his entourage. ",
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/newsStory1.jpg",
+        "url": "http://localhost:8080/images/players-spainey-hero.jpg",
         "width": 116,
         "height": 200
     },
     "imgUrlMain": {
-        "url": "http://localhost:8080/images/newsStory1.jpg",
+        "url": "http://localhost:8080/images/players-spainey-main.jpg",
         "width": 116,
         "height": 200
     }
@@ -18,16 +19,17 @@
 {
     "id":2, 
     "name":"Jim Christy", 
+    "nickname":"The Sandman", 
     "dob": "7/1/78",
     "handicap": 18,
     "bio": "Rumour has it his putter has to be fire-proofed at least once a month, due to how hot it gets. Highest position in a Spainey Cup is 4th in 2017. Jim has his sights set on the prize this year.",
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/newsStory1.jpg",
+        "url": "http://localhost:8080/images/players-jim-hero.jpg",
         "width": 116,
         "height": 200
     },
     "imgUrlMain": {
-        "url": "http://localhost:8080/images/newsStory1.jpg",
+        "url": "http://localhost:8080/images/players-jim-main.jpg",
         "width": 116,
         "height": 200
     }
@@ -35,16 +37,89 @@
 {
     "id":3, 
     "name":"Matt Edge", 
+    "nickname":"Edgy", 
     "dob": "4/5/82",
     "handicap": 12,
     "bio": "Known for his irrepresible sense of humour and style, Edgey has a beef this year with Iain 'Macca' Mackenzie who nudged him out of contention for a nail-biting Masters victory in 2017. Matt won't let such history put him off his stride and this year he's out for blood. Or at the very least to put the local curry house out of business with one of his legendary Trip Advisor reviews.",
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/newsStory1.jpg",
+        "url": "http://localhost:8080/images/players-edgy-hero.jpg",
         "width": 116,
         "height": 200
     },
     "imgUrlMain": {
-        "url": "http://localhost:8080/images/newsStory1.jpg",
+        "url": "http://localhost:8080/images/players-edgy-main.jpg",
+        "width": 116,
+        "height": 200
+    }
+},
+{
+    "id":4, 
+    "name":"Neil Cartmell", 
+    "nickname":"Derrick", 
+    "dob": "4/5/77",
+    "handicap": 8,
+    "bio": "Cheating bastard Neil \"Derrick\" Cartmell has been surrounded in controversy ever since he burst onto the scene at the inaugural Spainey Cup in 2013, bleating on about various injuries and lack of recent experience, only to blow away the competition and storm into 1st place to the disgust of his fellow competitors. Referred to more frequently as \"The Bandit\", Cartmell struggles to put a foot right as any slight infraction to the rules would see him ejected permanently from the competition.",
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/players-derrick-hero.jpg",
+        "width": 116,
+        "height": 200
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/players-derrick-main.jpg",
+        "width": 116,
+        "height": 200
+    }
+},
+{
+    "id":5, 
+    "name":"Matt Leeson", 
+    "nickname":"The Stinger", 
+    "dob": "4/5/76",
+    "handicap": 10,
+    "bio": "Father of 2, Leeson is known on the circuit for his gentlemanly conduct at all times, his knowledge of golfing etiquette and his ability to play a mean round whilst also providing free coaching to any competitor who asks him for advice on how to not make a complete balls up of their next shot.",
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/players-leeson-hero.jpg",
+        "width": 116,
+        "height": 200
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/players-leeson-main.jpg",
+        "width": 116,
+        "height": 200
+    }
+},
+{
+    "id":6, 
+    "name":"Iain Mackenzie", 
+    "nickname":"Macca", 
+    "dob": "4/5/76",
+    "handicap": 18,
+    "bio": "Foo.",
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/players-macca-hero.jpg",
+        "width": 116,
+        "height": 200
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/players-macca-main.jpg",
+        "width": 116,
+        "height": 200
+    }
+},
+{
+    "id":7, 
+    "name":"Dave Bennett", 
+    "nickname":"Disco", 
+    "dob": "4/5/76",
+    "handicap": 18,
+    "bio": "Foo.",
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/players-disco-hero.jpg",
+        "width": 116,
+        "height": 200
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/players-leeson-main.jpg",
         "width": 116,
         "height": 200
     }

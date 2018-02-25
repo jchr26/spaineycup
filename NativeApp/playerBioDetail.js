@@ -10,10 +10,17 @@ export default class PlayerBioDetail extends Component {
         let playerMainImage = { uri: this.props.playerMainImage.url };
         console.log('playerMainImage:' + this.props.playerMainImage.url);
         return (
-            <View style={styles.playerDetailBox}>
+            <View>
+                <View style={styles.playerBioNameBox}>
+                    <Text style={styles.playerName}>{this.props.playerName}</Text>
+                </View>
+                <View style={styles.playerBioNickNameBox}>
+                    <Text style={styles.playerNickName}>"{this.props.playerNickName}"</Text>
+                </View>
+                <View style={styles.playerDetailBox}>
                     <Image source={playerMainImage} style={{width: this.props.playerMainImage.width, height: this.props.playerMainImage.height}} />
-                    <Text style={styles.playerName}>{this.props.name}</Text>
-                    <Text style={styles.playerBio}>{this.props.bio}</Text>
+                    <Text style={styles.playerBio}>{this.props.playerBio}</Text>
+                </View>
             </View>
         );
     }

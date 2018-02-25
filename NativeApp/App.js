@@ -37,7 +37,7 @@ export default class SpaineyCupMainPage extends Component {
     });
   }
 
-  handlePlayerIdChange(newsItemId){
+  handlePlayerIdChange(playerId){
     console.log('Setting playerId state:' + playerId);
 	this.setState({
 		playerId: playerId

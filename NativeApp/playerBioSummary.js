@@ -11,7 +11,7 @@ export default class PlayerBioSummary extends Component {
         return (
             <View style={styles.playerList}>
                 <View style={styles.playerListImage}>
-                    <Image source={playerImage} style={{width: 116, height: 200, marginLeft: 2}}/>
+                    <Image source={playerImage} style={{width: 116, height: 200, marginLeft: 2, borderColor: 'black', borderWidth: 1}}/>
                 </View>
             </View>
         );
