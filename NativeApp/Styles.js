@@ -39,6 +39,14 @@ export default StyleSheet.create({
         marginLeft: 2,
         marginRight: 2,
     },
+    playerVitalStatsBox: {
+        flex: 1,
+        backgroundColor: 'white',
+        marginTop: 1,
+        marginLeft: 2,
+        marginRight: 2,
+        marginBottom: 2,
+    },
     playerBioNickNameBox: {
         flex: 1,
         backgroundColor: 'forestgreen',

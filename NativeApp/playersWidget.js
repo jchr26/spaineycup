@@ -27,7 +27,11 @@ export default class PlayersWidget extends Component {
             var defaultPlayer = 
                     <PlayerBioDetail
                          playerName={players[defaultPlayerId].name}
+                         playerAge={players[defaultPlayerId].age}
+                         playerHandicap={players[defaultPlayerId].handicap}
                          playerNickName={players[defaultPlayerId].nickname}
+                         playerBestfinish={players[defaultPlayerId].bestfinish}
+                         playerTrademark={players[defaultPlayerId].trademark}
                          playerMainImage={players[defaultPlayerId].imgUrlMain}
                          playerBio={players[defaultPlayerId].bio}
                     />;
