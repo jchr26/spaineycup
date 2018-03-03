@@ -1,4 +1,16 @@
-[{
+[
+{
+    "id":6, 
+    "name":"The Spainey Cup 2018", 
+    "course":"North Berwick", 
+    "courseId": 0, 
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/comps-spaineycup-hero.jpg",
+        "width": 262,
+        "height": 200
+    }
+},
+{
     "id":1, 
     "name":"The Masters", 
     "course":"The Glen", 
