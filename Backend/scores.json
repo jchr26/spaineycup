@@ -1,0 +1,66 @@
+[{
+    "competitions": {
+        "1": {
+            "status": "Unplayed",
+            "players" : {
+                "1": {
+                    "holes": {
+                        "1" : {"strokes":4},
+                        "2" : {"strokes":0},
+                        "3" : {"strokes":0},
+                        "4" : {"strokes":0},
+                        "5" : {"strokes":0},
+                        "6" : {"strokes":0},
+                        "7" : {"strokes":0},
+                        "8" : {"strokes":0},
+                        "9" : {"strokes":0},
+                        "10" : {"strokes":5},
+                        "11" : {"strokes":0},
+                        "12" : {"strokes":0},
+                        "13" : {"strokes":0},
+                        "14" : {"strokes":0},
+                        "15" : {"strokes":0},
+                        "16" : {"strokes":0},
+                        "17" : {"strokes":0},
+                        "18" : {"strokes":0}
+                    } 
+                },
+                "2": {
+                    "holes": {
+                        "1" : {"strokes":3},
+                        "2" : {"strokes":0},
+                        "3" : {"strokes":0},
+                        "4" : {"strokes":0},
+                        "5" : {"strokes":0},
+                        "6" : {"strokes":0},
+                        "7" : {"strokes":0},
+                        "8" : {"strokes":0},
+                        "9" : {"strokes":0},
+                        "10" : {"strokes":3},
+                        "11" : {"strokes":0},
+                        "12" : {"strokes":0},
+                        "13" : {"strokes":0},
+                        "14" : {"strokes":0},
+                        "15" : {"strokes":0},
+                        "16" : {"strokes":0},
+                        "17" : {"strokes":0},
+                        "18" : {"strokes":0}
+                    } 
+                }
+            }
+        },
+        "2": {
+            "status": "Unplayed"
+        },
+        "3": {
+            "status": "Unplayed"
+        },
+        "4": {
+            "status": "Unplayed"
+        },
+        "5": {
+            "status": "Unplayed"
+        }
+    }
+}
+]

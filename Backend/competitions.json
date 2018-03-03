@@ -1,0 +1,56 @@
+[{
+    "id":1, 
+    "name":"The Masters", 
+    "course":"The Glen", 
+    "courseId": 1, 
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/comps-masters-hero.jpg",
+        "width": 262,
+        "height": 200
+    }
+},
+{
+    "id":2, 
+    "name":"Players Championship", 
+    "course":"Gullane #2", 
+    "courseId": 2, 
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/comps-players-hero.jpg",
+        "width": 262,
+        "height": 200
+    }
+},
+{
+    "id":3, 
+    "name":"The US Open", 
+    "course":"Gullane #2", 
+    "courseId": 2, 
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/comps-usopen-hero.jpg",
+        "width": 262,
+        "height": 200
+    }
+},
+{
+    "id":4, 
+    "name":"The Open", 
+    "course":"Dunbar", 
+    "courseId": 3, 
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/comps-britishopen-hero.jpg",
+        "width": 262,
+        "height": 200
+    }
+},
+{
+    "id":5, 
+    "name":"PGA Championship", 
+    "course":"The Glen", 
+    "courseId": 1, 
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/comps-pga-hero.jpg",
+        "width": 262,
+        "height": 200
+    }
+}
+]

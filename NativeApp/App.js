@@ -6,6 +6,7 @@ import HeaderBar from './headerBar';
 import TopNavigationBar from './topNavigationBar';
 import NewsWidget from './newsWidget';
 import PlayersWidget from './playersWidget';
+import LeaderboardWidget from './leaderboardWidget';
 
 export default class SpaineyCupMainPage extends Component {
 
@@ -14,14 +15,18 @@ export default class SpaineyCupMainPage extends Component {
     this.state = {
         data:[],
         newsData:[],
+        compData:[],
+        scoreData:[],
 		newsItemId: 0,
 		playerId: 0,
+		compId: 0,
 		section: 'News'
     }
 
 	this.handleSectionChange = this.handleSectionChange.bind(this);
 	this.handleNewsItemIdChange = this.handleNewsItemIdChange.bind(this);
 	this.handlePlayerIdChange = this.handlePlayerIdChange.bind(this);
+	this.handleCompIdChange = this.handleCompIdChange.bind(this);
   }
 
   handleSectionChange(sectionSelected){
@@ -41,6 +46,13 @@ export default class SpaineyCupMainPage extends Component {
     console.log('Setting playerId state:' + playerId);
 	this.setState({
 		playerId: playerId
+    });
+  }
+
+  handleCompIdChange(compId){
+    console.log('Setting compId state:' + compId);
+	this.setState({
+		compId: compId
     });
   }
 
@@ -72,9 +84,38 @@ export default class SpaineyCupMainPage extends Component {
       });
   }
 
+  getCompData(){
+    return fetch('http://127.0.0.1:8080/competitions')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({compData: responseJson});
+        console.log('competitions' + responseJson);
+        console.log('competition:' + responseJson[0].name);
+      })
+      .catch((error) => {
+        console.debug(error);
+        this.setState({compData: ""});
+      });
+  }
+
+  getScoreData(){
+    return fetch('http://127.0.0.1:8080/scores')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({scoreData: responseJson});
+        console.log('scores' + responseJson[0]['competitions']['1'].status);
+      })
+      .catch((error) => {
+        console.debug(error);
+        this.setState({scoreData: ""});
+      });
+  }
+
   componentDidMount(){
     this.getPlayerData();
     this.getNewsData();
+    this.getCompData();
+    this.getScoreData();
   }
 
   render() {
@@ -98,9 +139,13 @@ export default class SpaineyCupMainPage extends Component {
                     playerId={this.state.playerId}
                     newsData={this.state.newsData}
                     newsItemId={this.state.newsItemId}
+                    compData={this.state.compData}
+                    scoreData={this.state.scoreData}
+                    compId={this.state.compId}
 					onSectionChange={this.handleSectionChange}
 					onNewsItemIdChange={this.handleNewsItemIdChange}
 					onPlayerIdChange={this.handlePlayerIdChange}
+					onCompIdChange={this.handleCompIdChange}
 				/>
             </View>
         </View>
@@ -119,6 +164,7 @@ class ContentContainer extends Component {
 		super(props);
 	    this.handleNewsItemChange = this.handleNewsItemChange.bind(this);
 	    this.handlePlayerChange = this.handlePlayerChange.bind(this);
+	    this.handleCompChange = this.handleCompChange.bind(this);
 	}
 
     handleNewsItemChange(newsItemId){
@@ -127,6 +173,10 @@ class ContentContainer extends Component {
 
     handlePlayerChange(playerId){
         this.props.onPlayerIdChange(playerId);
+    }
+
+    handleCompChange(compId){
+        this.props.onCompIdChange(compId);
     }
 
 	render() {
@@ -147,6 +197,15 @@ class ContentContainer extends Component {
                                 playerId={this.props.playerId}  
 					            onPlayerIdChange={this.handlePlayerChange}
 
+                            />;
+		}
+		else if (this.props.navSection == "Leader Board") {
+			contentWidget = <LeaderboardWidget
+                                compId={this.props.compId}  
+                                compData={this.props.compData} 
+                                scoreData={this.props.scoreData} 
+                                playerData={this.props.playerData} 
+					            onCompIdChange={this.handleCompChange}
                             />;
 		}
 		else {

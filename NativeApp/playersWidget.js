@@ -19,7 +19,6 @@ export default class PlayersWidget extends Component {
             playerList.push(
                 <TouchableOpacity onPress={() => {this.props.onPlayerIdChange(playerId);this.refs._playerBioScrollView.scrollTo({x:0, y:0, animated: false})}} key={i} >
                 <PlayerBioSummary 
-                    playerName={players[i].name}
                     playerHeroImage={players[i].imgUrlHero}
                     />
                 </TouchableOpacity>

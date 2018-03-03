@@ -24,7 +24,7 @@ export default class TopNavigationBar extends Component {
 				<View style={{width: 1, backgroundColor: 'white'}}/>
             </View>
             <View style={styles.buttonContainer}>
-                <Button color='white' onPress={() => { this.handleSectionChange('Scores') }} title="Scores"/>
+                <Button color='white' onPress={() => { this.handleSectionChange('Leader Board') }} title="Leader Board"/>
 				<View style={{width: 1, backgroundColor: 'white'}}/>
             </View>
             <View style={styles.buttonContainer}>
@@ -33,10 +33,6 @@ export default class TopNavigationBar extends Component {
             </View>
             <View style={styles.buttonContainer}>
                 <Button color='white' onPress={() => { this.handleSectionChange('Gallery') }} title="Gallery"/>
-				<View style={{width: 1, backgroundColor: 'white'}}/>
-            </View>
-            <View style={styles.buttonContainer}>
-                <Button color='white' onPress={() => { this.handleSectionChange('Trivia') }} title="Trivia"/>
 				<View style={{width: 1, backgroundColor: 'white'}}/>
             </View>
         </ScrollView>
