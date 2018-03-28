@@ -137,4 +137,44 @@
         "width": 116,
         "height": 200
     }
+},
+{
+    "id":8, 
+    "name":"James Scott", 
+    "nickname":"Antarctica", 
+    "trademark": "3 Wood off the deck",
+    "age": "unknown",
+    "handicap": 10,
+    "bestfinish": "rookie",
+    "bio": "Scott, of the Antarctic, almost debuted on the Spainey Cup in 2017 but had to pull out at the last minute due to unforseen circumstances. Rumours on the tour indicate his early Bitcoin investments had given him false hopes of early retirement. Looks like Scott has had to rethink hanging up his spikes and joins us on tour this year as if butter wouldn't melt. One of two rookies on the 2018 tour he's a relatively unknown quantity although according to tour chairman, Spainey, Scott is a regular down the range and had been preparing for his debut with a rigorous training schedule.",
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/players-disco-hero.jpg",
+        "width": 116,
+        "height": 200
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/players-leeson-main.jpg",
+        "width": 116,
+        "height": 200
+    }
+},
+{
+    "id":9, 
+    "name":"Peter Harris", 
+    "nickname":"Pete the Heat", 
+    "trademark": "Bunker hole outs",
+    "age": "unknown",
+    "handicap": 10,
+    "bestfinish": "rookie",
+    "bio": "A last minute addition to the tour, Harris comes well recommended. We're unsure what to expect from our second rookie's outing but he's been recommending futuristic golf shoes and bats to the rest of the tour via the Whatsapp group. A particular recommendation of some retro Adidas golf shoes rattled Edgey who dismissed them immediately due their illegal metal spikes. Harris later deleted his Facebook post on the subject but no doubt will still be trying sneak them on the tour.",
+    "imgUrlHero": {
+        "url": "http://localhost:8080/images/players-disco-hero.jpg",
+        "width": 116,
+        "height": 200
+    },
+    "imgUrlMain": {
+        "url": "http://localhost:8080/images/players-leeson-main.jpg",
+        "width": 116,
+        "height": 200
+    }
 }]
