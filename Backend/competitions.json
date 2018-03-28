@@ -5,7 +5,7 @@
     "course":"North Berwick", 
     "courseId": 0, 
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/comps-spaineycup-hero.jpg",
+        "url": "http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/images/comps-spaineycup-hero.jpg",
         "width": 262,
         "height": 200
     }
@@ -16,7 +16,7 @@
     "course":"The Glen", 
     "courseId": 1, 
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/comps-masters-hero.jpg",
+        "url": "http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/images/comps-masters-hero.jpg",
         "width": 262,
         "height": 200
     }
@@ -27,7 +27,7 @@
     "course":"Gullane #2", 
     "courseId": 2, 
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/comps-players-hero.jpg",
+        "url": "http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/images/comps-players-hero.jpg",
         "width": 262,
         "height": 200
     }
@@ -38,7 +38,7 @@
     "course":"Gullane #2", 
     "courseId": 2, 
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/comps-usopen-hero.jpg",
+        "url": "http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/images/comps-usopen-hero.jpg",
         "width": 262,
         "height": 200
     }
@@ -49,7 +49,7 @@
     "course":"Dunbar", 
     "courseId": 3, 
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/comps-britishopen-hero.jpg",
+        "url": "http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/images/comps-britishopen-hero.jpg",
         "width": 262,
         "height": 200
     }
@@ -60,7 +60,7 @@
     "course":"The Glen", 
     "courseId": 1, 
     "imgUrlHero": {
-        "url": "http://localhost:8080/images/comps-pga-hero.jpg",
+        "url": "http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/images/comps-pga-hero.jpg",
         "width": 262,
         "height": 200
     }
