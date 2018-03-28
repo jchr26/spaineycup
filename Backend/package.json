@@ -1,0 +1,30 @@
+{
+  "name": "spaineycup",
+  "version": "0.0.1",
+  "description": "SpaineyCup backend",
+  "main": "players.js",
+  "dependencies": {
+    "restify": "^6.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jchr26/spaineycup.git"
+  },
+  "keywords": [
+    "Spainey",
+    "Cup",
+    "Golf",
+    "2018"
+  ],
+  "author": "Jim Christy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jchr26/spaineycup/issues"
+  },
+  "homepage": "https://github.com/jchr26/spaineycup#readme"
+}
