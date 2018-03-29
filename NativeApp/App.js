@@ -57,7 +57,7 @@ export default class SpaineyCupMainPage extends Component {
   }
 
   getPlayerData(){
-    return fetch('http://127.0.0.1:8080/players')
+    return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/players')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({playerData: responseJson});
@@ -71,7 +71,7 @@ export default class SpaineyCupMainPage extends Component {
   }
 
   getNewsData(){
-    return fetch('http://127.0.0.1:8080/newsItems')
+    return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/newsItems')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({newsData: responseJson});
@@ -85,7 +85,7 @@ export default class SpaineyCupMainPage extends Component {
   }
 
   getCompData(){
-    return fetch('http://127.0.0.1:8080/competitions')
+    return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/competitions')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({compData: responseJson});
@@ -99,7 +99,7 @@ export default class SpaineyCupMainPage extends Component {
   }
 
   getScoreData(){
-    return fetch('http://127.0.0.1:8080/scores')
+    return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/scores')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({scoreData: responseJson});
