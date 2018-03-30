@@ -19,7 +19,7 @@ exports.getNewsItem = function(req, res, next){
 
 exports.getNewsItems = function(req, res, next){
     var AWS = require('aws-sdk');
-    AWS.config.loadFromPath('./config.json');
+    AWS.config.loadFromPath('./.config.json');
     AWS.config.update({region: 'eu-west-2'});
 
     var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
