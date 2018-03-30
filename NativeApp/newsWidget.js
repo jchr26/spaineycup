@@ -58,7 +58,7 @@ export default class NewsWidget extends Component {
                     storyTitle={stories[i].title}
                     storyHeroImage={stories[i].imgUrlHero}
                     storyMainImage={stories[i].imgUrlMain}
-                    storyDate={stories[i].date} 
+                    storyDate={stories[i].createdate} 
                     />
                 </TouchableOpacity>
             );
@@ -69,7 +69,7 @@ export default class NewsWidget extends Component {
                              storyHeroImage={stories[defaultStoryId].imgUrlHero}
                              storyMainImage={stories[defaultStoryId].imgUrlMain}
                              storyBody={stories[defaultStoryId].story}
-                             storyDate={stories[defaultStoryId].date}
+                             storyDate={stories[defaultStoryId].createdate}
                         />;
         }
 
