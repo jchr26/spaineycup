@@ -1,3 +1,4 @@
+
 const readJSON = require ('./readJSON.js');
 
 exports.getNewsItem = function(req, res, next){
@@ -17,9 +18,29 @@ exports.getNewsItem = function(req, res, next){
 }
 
 exports.getNewsItems = function(req, res, next){
-    var newsItems = readJSON.readNewsItems();
-    res.send(newsItems);
+    var AWS = require('aws-sdk');
+    AWS.config.loadFromPath('./config.json');
+    AWS.config.update({region: 'eu-west-2'});
 
-    console.log(newsItems);
-    next();
+    var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+
+    var params = {
+        TableName: "newsItems"
+    };
+    ddb.scan(params, function(err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+
+            var newsItems = [];
+            data.Items.forEach(function(element, index, array) {
+                var newsItem = AWS.DynamoDB.Converter.unmarshall(element); 
+                console.log(newsItem);
+                newsItems.push(newsItem);
+            });
+
+            res.send(newsItems);
+            next();
+        }
+    });
 }
