@@ -22,12 +22,12 @@ export default class NewsWidget extends Component {
     }
   
     getNewsData(){
-        return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/newsItems')
+        return fetch('http://127.0.0.1/newsItems')
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({newsData: responseJson});
                     console.log('newsItems' + responseJson);
-                    console.log('newsItem:' + responseJson[5].title);
+                    console.log('newsItem:' + responseJson[0].title);
                 this.props.newsData = this.state.newsData; 
             })
         .catch((error) => {

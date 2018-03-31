@@ -10,6 +10,7 @@ import LeaderboardWidget from './leaderboardWidget';
 
 export default class SpaineyCupMainPage extends Component {
 
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +28,9 @@ export default class SpaineyCupMainPage extends Component {
 	this.handleNewsItemIdChange = this.handleNewsItemIdChange.bind(this);
 	this.handlePlayerIdChange = this.handlePlayerIdChange.bind(this);
 	this.handleCompIdChange = this.handleCompIdChange.bind(this);
+    
+    this.baseUrl = "127.0.0.1";
+    
   }
 
   handleSectionChange(sectionSelected){
@@ -57,7 +61,7 @@ export default class SpaineyCupMainPage extends Component {
   }
 
   getPlayerData(){
-    return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/players')
+    return fetch('http://'+this.baseUrl+'/players')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({playerData: responseJson});
@@ -71,7 +75,7 @@ export default class SpaineyCupMainPage extends Component {
   }
 
   getNewsData(){
-    return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/newsItems')
+    return fetch('http://'+this.baseUrl+'/newsItems')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({newsData: responseJson});
@@ -85,7 +89,7 @@ export default class SpaineyCupMainPage extends Component {
   }
 
   getCompData(){
-    return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/competitions')
+    return fetch('http://'+this.baseUrl+'/competitions')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({compData: responseJson});
@@ -99,7 +103,7 @@ export default class SpaineyCupMainPage extends Component {
   }
 
   getScoreData(){
-    return fetch('http://ec2-35-178-146-197.eu-west-2.compute.amazonaws.com/scores')
+    return fetch('http://'+this.baseUrl+'/scores')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({scoreData: responseJson});
