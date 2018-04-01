@@ -4,6 +4,7 @@
   "description": "SpaineyCup backend",
   "main": "players.js",
   "dependencies": {
+    "node-cache": "^4.2.0",
     "restify": "^6.3.4"
   },
   "devDependencies": {},

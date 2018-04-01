@@ -3,6 +3,12 @@ const newsItems = require('./newsItems.js');
 const competitions = require('./competitions.js');
 const scores = require('./scores.js');
 
+let cacheProvider = require('./cacheProvider.js');
+
+cacheProvider.start(function(err) {
+    if (err) console.error(err);
+});
+
 var restify = require('restify');
 
 var server = restify.createServer();
