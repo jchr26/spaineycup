@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image, View, StyleSheet, Text, ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import LeaderboardDetailRound from './leaderboardDetailRound';
 
 import styles from './Styles'
 
@@ -9,52 +10,38 @@ export default class LeaderboardDetail extends Component {
         super(props);
     }
 
+    getCompCourseData(courseData, compCourseId){
+        let compCourseData = [];
+        for (let i=0; i < courseData.length; i++){
+            if (courseData[i].courseId == compCourseId) {
+                compCourseData = courseData[i];
+            }
+        }
+        return compCourseData;
+    }
+
     render(){
         let compId = this.props.compId;
         let compName = this.props.compName;
         let compCourse = this.props.compCourse;
-        let scoreData = this.props.scoreData;
+        let compCourseId = this.props.compCourseId;
+        let courseData = this.props.courseData;
         let playerData = this.props.playerData;
+        let compPoints = this.props.compPoints;
 
-        // Loop through players, get their score data and total up strokes
-        // Also rank leaders by stroke (initially)
+        // Maybe use scoreData to display individual rounds
+        //let scoreData = this.props.scoreData;
 
-        let playerArr = [];
-
-        // get the players data (is this necessary?)
-        for (var i=0; i < playerData.length; i++){
-            playerArr[i] = {
-                            "playerId": playerData[i].id,
-                            "name": playerData[i].name, 
-                            "handicap": playerData[i].handicap,
-                            };
-        }
+        let compCourseData = this.getCompCourseData(courseData, compCourseId);
 
         let totalScores = [];
-        for (var i=0; i < playerArr.length; i++){
-            let playerId = playerArr[i].playerId;
-            totalScores[i] = [];
-            totalScores[i]['playerName'] = playerArr[i].name.toUpperCase();
-            totalScores[i]['strokes'] = 0;
-            totalScores[i]['points'] = 0;
 
-            try {
-                let playerCompHoles = scoreData[0]['competitions'][compId]['players'][playerId]['holes'];
-                for (var j=1; j <= 18; j++){
-                    totalScores[i].strokes = totalScores[i].strokes + playerCompHoles[j].strokes;            
-                }
-            }
-            catch(e) {
-                console.log('Error loading scores for playerId: ' + playerId); 
-            }
+        for (let playerId in compPoints[compId.toString()]){
+            totalScores[playerId] = compPoints[compId.toString()][playerId];
         }
 
-        totalScores.sort(function(a,b){
-            return a.strokes-b.strokes
-        })
-
         var tablePositions = [];
-        for (i=0; i<playerArr.length; i++){
+        for (i=0; i<playerData.length; i++){
             tablePositions[i] = i+1;
         }
 
@@ -62,8 +49,28 @@ export default class LeaderboardDetail extends Component {
 
         let tableData = [];
         for (i=0; i<totalScores.length; i++) {
+            if (totalScores[i] == null) {
+                console.log("i null:" + i);
+                continue;
+            }
             tableData[i] = [totalScores[i].playerName, totalScores[i].strokes, totalScores[i].points];
         }
+
+        totalScores.sort(function(a,b){
+            return a.points-b.points
+        }).reverse(); 
+
+        var detailRound = 
+                    <LeaderboardDetailRound
+                         compName={compName}
+                         compId={compId}
+                         compCourse={compCourse}
+                         compCourseData={compCourseData}
+                         compCourseId={compCourseId}
+                         scoreData={this.props.scoreData} 
+                         playerData={playerData[1]}
+                         compPoints={this.props.compPoints} 
+                    />;
 
         return (
             <View>
@@ -81,6 +88,9 @@ export default class LeaderboardDetail extends Component {
                             <Rows data={tableData} flexArr={[4, 1, 1]} style={stylers.row} textStyle={stylers.rowText}/>
                         </TableWrapper>
                     </Table>
+                </View>
+                <View>
+                    {detailRound}
                 </View>
             </View>
         );

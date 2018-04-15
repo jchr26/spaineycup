@@ -18,9 +18,10 @@ export default class SpaineyCupMainPage extends Component {
         newsData:[],
         compData:[],
         scoreData:[],
+        compPoints:[],
 		newsItemId: 0,
 		playerId: 0,
-		compId: 0,
+		compId: 6,
 		section: 'News'
     }
 
@@ -102,6 +103,7 @@ export default class SpaineyCupMainPage extends Component {
       });
   }
 
+
   getScoreData(){
     return fetch('http://'+this.baseUrl+'/scores')
       .then((response) => response.json())
@@ -115,11 +117,40 @@ export default class SpaineyCupMainPage extends Component {
       });
   }
 
+  getCourseData(){
+    return fetch('http://'+this.baseUrl+'/courses')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({courseData: responseJson});
+        console.log('courses' + responseJson[0].courseName);
+      })
+      .catch((error) => {
+        console.debug(error);
+        this.setState({courseData: ""});
+      });
+  }
+
+  getCompPoints(){
+    return fetch('http://'+this.baseUrl+'/compPoints')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({compPoints: responseJson});
+        console.log('compPoints' + responseJson);
+        console.log('compPoints:' + responseJson[6][1].playerName);
+      })
+      .catch((error) => {
+        console.debug(error);
+        this.setState({compPoints: ""});
+      });
+  }
+
   componentDidMount(){
     this.getPlayerData();
     this.getNewsData();
     this.getCompData();
     this.getScoreData();
+    this.getCourseData();
+    this.getCompPoints();
   }
 
   render() {
@@ -144,7 +175,9 @@ export default class SpaineyCupMainPage extends Component {
                     newsData={this.state.newsData}
                     newsItemId={this.state.newsItemId}
                     compData={this.state.compData}
+                    compPoints={this.state.compPoints}
                     scoreData={this.state.scoreData}
+                    courseData={this.state.courseData}
                     compId={this.state.compId}
 					onSectionChange={this.handleSectionChange}
 					onNewsItemIdChange={this.handleNewsItemIdChange}
@@ -207,7 +240,9 @@ class ContentContainer extends Component {
 			contentWidget = <LeaderboardWidget
                                 compId={this.props.compId}  
                                 compData={this.props.compData} 
+                                compPoints={this.props.compPoints} 
                                 scoreData={this.props.scoreData} 
+                                courseData={this.props.courseData} 
                                 playerData={this.props.playerData} 
 					            onCompIdChange={this.handleCompChange}
                             />;

@@ -19,7 +19,7 @@ export default class LeaderboardComps extends Component {
                         <Text style={styles.compName}>{compName}</Text>
                     </View>
                     <View style={styles.playerListImage}>
-                        <Image source={compImage} style={{width: 262, height: 200, marginLeft: 2, borderColor: 'black', borderWidth: 1}}/>
+                        <Image source={compImage} style={{width: 262, height: 112, marginLeft: 2, borderColor: 'black', borderWidth: 1}}/>
                     </View>
                     <View style={styles.compBox}>
                         <Text style={styles.compCourse}>{compCourse}</Text>

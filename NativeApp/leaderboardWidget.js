@@ -11,41 +11,76 @@ export default class LeaderboardWidget extends Component {
 	}
 	render() {
         let comps = this.props.compData;
-        let scores = this.props.scoreData;
+        let compPoints = this.props.compPoints;
 
         var compList = [];
         var defaultCompId = this.props.compId;
 
-        for (var i = 0; i < comps.length; i++){
-            let compId = i;
+        let sortedComps = {};
+
+        // sort the comps
+        for (let i = 0; i < comps.length; i++){
+            let compId = comps[i].competitionId;
             
-            compList.push(
-                <TouchableOpacity onPress={() => {this.props.onCompIdChange(compId);this.refs._compDetailScrollView.scrollTo({x:0, y:0, animated: false})}} key={i} >
-                    <LeaderboardComps 
-                        compHeroImage={comps[i].imgUrlHero}
-                        compName={comps[i].name}
-                        compCourse={comps[i].course}
-                    />
-                </TouchableOpacity>
-            );
+            sortedComps[compId] = {
+                "competitionId": comps[i].competitionId,
+                "course": comps[i].course,
+                "courseId": comps[i].courseId,
+                "name": comps[i].name,
+                "imgUrlHero": comps[i].imgUrlHero
+            }; 
+        }
+
+        // to make the competitions display in the order (Spainey Cup first (6))
+        for (let compId in sortedComps){
+            if (compId == 6) {
+                console.log("Key = 6");
+                compList.unshift(
+                    <TouchableOpacity onPress={() => {this.props.onCompIdChange(compId);this.refs._compDetailScrollView.scrollTo({x:0, y:0, animated: false})}} key={compId} >
+                        <LeaderboardComps
+                            compHeroImage={sortedComps[compId].imgUrlHero}
+                            compName={sortedComps[compId].name}
+                            compCourse={sortedComps[compId].course}
+                            compCourseId={sortedComps[compId].courseId}
+                        />
+                    </TouchableOpacity>
+                );
+            } else {
+                compList.push(
+                    <TouchableOpacity onPress={() => {this.props.onCompIdChange(compId);this.refs._compDetailScrollView.scrollTo({x:0, y:0, animated: false})}} key={compId} >
+                        <LeaderboardComps
+                            compHeroImage={sortedComps[compId].imgUrlHero}
+                            compName={sortedComps[compId].name}
+                            compCourseId={sortedComps[compId].courseId}
+                            compCourse={sortedComps[compId].course}
+                        />
+                    </TouchableOpacity>
+                );
+            }
         }
 
         var defaultComp = 
                     <LeaderboardDetail
-                         compName={comps[defaultCompId].name}
-                         compId={comps[defaultCompId].id}
-                         compCourse={comps[defaultCompId].course}
+                         compName={sortedComps[defaultCompId].name}
+                         compId={sortedComps[defaultCompId].competitionId}
+                         compCourse={sortedComps[defaultCompId].course}
                          scoreData={this.props.scoreData} 
+                         compCourseId={sortedComps[defaultCompId].courseId}
+                         courseData={this.props.courseData} 
                          playerData={this.props.playerData} 
+                         compPoints={this.props.compPoints} 
                     />;
 
         var defaultCompDetailRound = 
                     <LeaderboardDetailRound
-                         compName={comps[defaultCompId].name}
-                         compId={comps[defaultCompId].id}
-                         compCourse={comps[defaultCompId].course}
+                         compName={sortedComps[defaultCompId].name}
+                         compId={sortedComps[defaultCompId].id}
+                         compCourse={sortedComps[defaultCompId].course}
+                         compCourseId={sortedComps[defaultCompId].courseId}
                          scoreData={this.props.scoreData} 
+                         courseData={this.props.courseData} 
                          playerData={this.props.playerData} 
+                         compPoints={this.props.compPoints} 
                     />;
 
 		return (
@@ -60,11 +95,6 @@ export default class LeaderboardWidget extends Component {
                         {defaultComp}
                     </ScrollView>
                 </View>
-                <View style={{flex: 1}}>
-                    <ScrollView horizontal={true} ref='_compDetailRoundScrollView' showsHorizontalScrollIndicator={false}>
-                        {defaultCompDetailRound}
-                    </ScrollView>
-			    </View>
 			</View>
 		)
 	}
